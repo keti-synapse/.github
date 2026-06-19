@@ -86,10 +86,6 @@ graph TB
 | `synapse-sdk-ts` | TypeScript | 브라우저 네이티브 WebRTC 래핑. `cockpit.js` / `nexus_ui` 마이그레이션 대상. |
 | `synapse-sdk-unity` | C# / Unity | XR · 시뮬레이션 환경에서의 로봇 제어 및 스트림 수신. |
 
-## 라이선스
-
-KETI 지능로보틱스연구센터 STAR TEAM 내부 프로젝트입니다. 외부 공개 및 배포 정책은 별도로 정해지지 않았습니다.
-
 ---
 
 <div align="center">
