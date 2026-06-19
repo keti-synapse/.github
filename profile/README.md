@@ -46,7 +46,7 @@ graph TB
 | **[synapse](https://github.com/keti-synapse/synapse)** | 공통 표준 레이어 | 토픽 · 메시지 · 열거형 · 모델 · 빌더 정의. 클린 아키텍처 최내층. `nexus`와 `tom_and_gerri`가 import. | Python |
 | **[nexus](https://github.com/keti-synapse/nexus)** | 시그널링 서버 | FastAPI + WebSocket 기반 시그널링 게이트웨이. fleet 상태 캐시와 REST API 제공, WebRTC offer/answer/ICE 중개. | Python |
 | **[nexus_ui](https://github.com/keti-synapse/nexus_ui)** | 관제 대시보드 | fleet 상태 모니터링 UI. Alpine.js + Tailwind CSS. 빌드 단계 없는 순수 프론트엔드. | JS / HTML |
-| **[tom_and_gerri](https://github.com/keti-synapse/tom_and_gerri)** | 로봇 제어 코어 | 단일 로봇 제어. aiortc 기반 P2P, pypubsub 내부 이벤트 버스, 카메라 추상화(RealSense / webcam), 브라우저 코크핏 UI. | Python |
+| **[tom_and_gerri](https://github.com/keti-synapse/tom_and_gerri)** | 로봇 제어 코어 | 단일 로봇 제어. aiortc 기반 P2P, pypubsub 내부 이벤트 버스, 카메라 추상화(RealSense / webcam), 브라우저 CockPit UI. | Python |
 
 ## 기술 스택
 
