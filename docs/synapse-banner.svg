@@ -1,0 +1,69 @@
+<svg viewBox="0 0 1200 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SYNAPSE — Teleoperated Robot Fleet Platform">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#081521"/>
+      <stop offset="0.55" stop-color="#0A2236"/>
+      <stop offset="1" stop-color="#0E3354"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#00529B" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#00529B" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="word" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#CFE6F5"/>
+    </linearGradient>
+    <linearGradient id="link" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5BC2E7"/>
+      <stop offset="1" stop-color="#8FE0FF"/>
+    </linearGradient>
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="360" rx="14" fill="url(#bg)"/>
+  <ellipse cx="965" cy="185" rx="320" ry="240" fill="url(#glow)"/>
+
+  <!-- node network: nexus hub + fleet nodes -->
+  <g stroke-linecap="round">
+    <!-- signaling edges (hub -> nodes), faint -->
+    <g stroke="#3A6A93" stroke-width="1.6" opacity="0.55">
+      <line x1="965" y1="185" x2="850" y2="92"/>
+      <line x1="965" y1="185" x2="1095" y2="108"/>
+      <line x1="965" y1="185" x2="1118" y2="246"/>
+      <line x1="965" y1="185" x2="892" y2="284"/>
+      <line x1="965" y1="185" x2="800" y2="190"/>
+    </g>
+    <!-- P2P direct link, highlighted, bypassing hub -->
+    <path d="M1095 108 Q1175 220 892 284" fill="none" stroke="url(#link)" stroke-width="3" filter="url(#soft)"/>
+    <circle cx="1083" cy="200" r="4.5" fill="#EAF8FF"/>
+  </g>
+
+  <!-- fleet nodes -->
+  <g>
+    <circle cx="850" cy="92"   r="13" fill="#0E3A66" stroke="#5BC2E7" stroke-width="2"/>
+    <circle cx="1095" cy="108" r="13" fill="#0E3A66" stroke="#5BC2E7" stroke-width="2"/>
+    <circle cx="1118" cy="246" r="13" fill="#0E3A66" stroke="#5BC2E7" stroke-width="2"/>
+    <circle cx="892" cy="284"  r="13" fill="#0E3A66" stroke="#5BC2E7" stroke-width="2"/>
+    <circle cx="800" cy="190"  r="13" fill="#0E3A66" stroke="#5BC2E7" stroke-width="2"/>
+  </g>
+
+  <!-- nexus hub -->
+  <circle cx="965" cy="185" r="24" fill="#00529B" stroke="#5BC2E7" stroke-width="2.5"/>
+  <circle cx="965" cy="185" r="9" fill="#EAF8FF"/>
+
+  <!-- P2P tag -->
+  <text x="1100" y="196" font-family="'Segoe UI', system-ui, -apple-system, Helvetica, Arial, sans-serif"
+        font-size="14" font-weight="600" letter-spacing="1.5" fill="#8FE0FF">P2P</text>
+
+  <!-- wordmark -->
+  <text x="80" y="172" font-family="'Segoe UI', system-ui, -apple-system, Helvetica, Arial, sans-serif"
+        font-size="90" font-weight="800" letter-spacing="6" fill="url(#word)">SYNAPSE</text>
+  <rect x="84" y="196" width="64" height="4" rx="2" fill="#5BC2E7"/>
+  <text x="156" y="200" font-family="'Segoe UI', system-ui, -apple-system, Helvetica, Arial, sans-serif"
+        font-size="22" font-weight="500" letter-spacing="0.5" fill="#9FD4EC">Teleoperated Robot Fleet Platform</text>
+  <text x="84" y="244" font-family="'Segoe UI', system-ui, -apple-system, Helvetica, Arial, sans-serif"
+        font-size="15" font-weight="400" letter-spacing="0.3" fill="#7C93A8">KETI 지능로보틱스연구센터 · STAR TEAM</text>
+</svg>
