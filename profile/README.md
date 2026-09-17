@@ -22,22 +22,7 @@
 
 **[인터랙티브 아키텍처 보기 →](https://keti-synapse.github.io/architecture.html)** · 통신 흐름과 공통 계약을 살펴보세요.
 
-```mermaid
-graph TB
-    UI["nexus_ui<br/>관제 대시보드"]
-    NEXUS["nexus<br/>시그널링 서버"]
-    OP["오퍼레이터 브라우저"]
-    ROBOT["tom_and_gerri<br/>로봇 제어 코어"]
-    STD["synapse<br/>공통 표준 레이어"]
-
-    UI -->|"REST · WebSocket<br/>fleet 상태"| NEXUS
-    OP  -->|"signaling · WebSocket"| NEXUS
-    ROBOT -->|"signaling · WebSocket"| NEXUS
-    OP <-->|"WebRTC P2P · video + data channel"| ROBOT
-
-    NEXUS -.->|import| STD
-    ROBOT -.->|import| STD
-```
+[![SYNAPSE 아키텍처](https://raw.githubusercontent.com/keti-synapse/.github/main/profile/docs/architecture-preview.svg)](https://keti-synapse.github.io/architecture.html)
 
 `nexus`는 offer/answer/ICE 교환만 중개합니다. 핸드셰이크가 끝나면 오퍼레이터와 `tom_and_gerri`는 서버를 거치지 않고 P2P 채널로 직접 통신합니다. 즉 **서버는 미디어 트래픽의 경로에 들어가지 않으며**, 연결 수립과 상태 동기화에만 관여합니다.
 
