@@ -20,6 +20,8 @@
 
 ## 아키텍처
 
+**[인터랙티브 아키텍처 보기 →](https://keti-synapse.github.io/architecture.html)** · 통신 흐름과 공통 계약을 살펴보세요.
+
 ```mermaid
 graph TB
     UI["nexus_ui<br/>관제 대시보드"]
