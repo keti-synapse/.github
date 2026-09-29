@@ -16,7 +16,7 @@
 
 ## 개요
 
-오퍼레이터와 로봇은 **WebRTC P2P**로 직접 연결됩니다. 서버(`nexus`)는 연결을 맺어주는 **시그널링**과 **fleet 상태 중개**만 담당하며, 영상·명령 같은 미디어는 서버를 거치지 않습니다. 네트워크가 끊겨도 연결은 **자동으로 복구**됩니다.
+오퍼레이터와 로봇은 **WebRTC**로 연결됩니다. `nexus`는 **플릿 관제·인증·상태 레지스트리·제어 세션·입장 승인**을, 독립 `synapse-signaling`은 **연결 협상**을 담당합니다. 영상·오디오·teleop는 peer 사이에서 직접 전달하며, 직결이 어려운 네트워크에서는 별도 TURN 릴레이를 사용합니다.
 
 ## 아키텍처
 
@@ -24,14 +24,15 @@
 
 [![SYNAPSE 아키텍처](https://raw.githubusercontent.com/keti-synapse/.github/main/profile/docs/architecture-preview.png)](https://keti-synapse.github.io/architecture.html)
 
-`nexus`는 offer/answer/ICE 교환만 중개합니다. 핸드셰이크가 끝나면 오퍼레이터와 `tom_and_gerri`는 서버를 거치지 않고 P2P 채널로 직접 통신합니다. 즉 **서버는 미디어 트래픽의 경로에 들어가지 않으며**, 연결 수립과 상태 동기화에만 관여합니다.
+`synapse-signaling`은 ready / leave · SDP offer / answer · ICE 교환만 중계합니다. `nexus` 관제와 분리되어 있으며, 영상·오디오·teleop의 WebRTC 데이터는 **peer 직결 또는 별도 TURN**으로 전달됩니다. legacy ingress는 구형 클라이언트의 관제 / RTC 경로를 나누는 호환 어댑터입니다.
 
 ## 레포지토리
 
 | 레포 | 역할 | 설명 | 언어 |
 |---|---|---|---|
 | **[synapse](https://github.com/keti-synapse/synapse)** | 공통 표준 레이어 | 토픽 · 메시지 · 열거형 · 모델 · 빌더 정의. 클린 아키텍처 최내층. `nexus`와 `tom_and_gerri`가 import. | Python |
-| **[nexus](https://github.com/keti-synapse/nexus)** | 시그널링 서버 | FastAPI + WebSocket 기반 시그널링 게이트웨이. fleet 상태 캐시와 REST API 제공, WebRTC offer/answer/ICE 중개. | Python |
+| **[nexus](https://github.com/keti-synapse/nexus)** | 플릿 관제 서버 | 인증 · 상태 레지스트리 · 관제 명령 · 제어 세션 · 입장 승인 · 플릿 미션 조율. | Python |
+| **[synapse-signaling](https://github.com/keti-synapse/synapse-signaling)** | 독립 시그널링 서버 | ready / leave · SDP / ICE 릴레이. 미디어를 중계하지 않으며, synapse를 import하지 않음. | Python |
 | **[nexus_ui](https://github.com/keti-synapse/nexus_ui)** | 관제 대시보드 | fleet 상태 모니터링 UI. Alpine.js + Tailwind CSS. 빌드 단계 없는 순수 프론트엔드. | JS / HTML |
 | **[tom_and_gerri](https://github.com/keti-synapse/tom_and_gerri)** | 로봇 제어 코어 | 단일 로봇 제어. aiortc 기반 P2P, pypubsub 내부 이벤트 버스, 카메라 추상화(RealSense / webcam), 브라우저 CockPit UI. | Python |
 
