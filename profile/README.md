@@ -20,7 +20,7 @@
 
 ## 아키텍처
 
-**[인터랙티브 아키텍처 보기 →](https://keti-synapse.github.io/architecture.html)** · 통신 흐름과 공통 계약을 살펴보세요.
+**[인터랙티브 아키텍처 보기 →](https://keti-synapse.github.io/architecture.html)** · 통신 흐름과 공통 계약을 살펴보세요. **[Architecture Studio에서 자세히 보기 →](https://rockcraft.xyz/architecture-studio/)**
 
 [![SYNAPSE 아키텍처](https://raw.githubusercontent.com/keti-synapse/.github/main/profile/docs/architecture-preview.png)](https://keti-synapse.github.io/architecture.html)
 
